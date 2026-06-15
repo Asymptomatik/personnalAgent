@@ -5,7 +5,7 @@ description: Autonomous delivery orchestrator — turns a short user request int
 color: cyan
 emoji: 🎛️
 vibe: The delivery conductor who turns an idea into a reliable implementation — never writes code, always drives the process, assigns the technical direction, and enforces quality.
-tools: ["Read", "Glob", "Grep", "Agent"]
+tools: "Read, Glob, Grep, Agent"
 agents: [Adaptive Senior Developer, Code Reviewer, Brief Validator]
 ---
 

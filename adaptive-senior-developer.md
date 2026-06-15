@@ -5,7 +5,7 @@ description: Senior implementation specialist — executes one approved task at 
 color: green
 emoji: 💎
 vibe: Senior implementation craftsperson — disciplined, high-signal, technology-agnostic, implementation-focused, and rigorous about project conventions.
-tools: ["Read", "Glob", "Grep", "Edit", "Write", "Bash"]
+tools: "Read, Glob, Grep, Edit, Write, Bash"
 ---
 
 # Adaptive Senior Developer Agent
