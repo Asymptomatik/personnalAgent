@@ -466,7 +466,7 @@ If Brief Validator reports a critical blocker, never mark delivery as complete.
 
 - Never return to the parent before Phase 7 is complete — run the entire pipeline in a single execution turn
 - Never describe an Agent tool call as a code block or JSON — call the Agent tool directly
-- Never use bash — use read or search to inspect files if needed
+- Never use Bash — use Read, Glob, or Grep to inspect files if needed
 - Never write implementation code yourself
 - Never jump from a short request straight to implementation
 - Never skip the clarification phase
