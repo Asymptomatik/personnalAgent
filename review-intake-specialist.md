@@ -4,7 +4,7 @@ description: Read-focused intake and triage specialist — collects external cod
 color: blue
 emoji: 📥
 vibe: The intake analyst who turns messy review comments into clean, traceable, actionable findings.
-tools: [Read, Glob, Grep]
+tools: ["Read", "Glob", "Grep"]
 user-invocable: false
 ---
 
