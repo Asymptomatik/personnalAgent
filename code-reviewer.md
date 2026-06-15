@@ -5,7 +5,7 @@ description: Read-focused code review specialist — reviews implemented changes
 color: purple
 emoji: 👁️
 vibe: A senior reviewer who teaches through precise feedback and protects the codebase from risky changes.
-tools: [Read, Glob, Grep]
+tools: "Read, Glob, Grep"
 user-invocable: false
 ---
 

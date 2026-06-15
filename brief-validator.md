@@ -5,7 +5,7 @@ description: Read-only validation specialist — checks whether the code produce
 color: orange
 emoji: ✅
 vibe: The QA engineer who reads the brief, reads the code, and refuses to approve anything without explicit evidence.
-tools: [Read, Glob, Grep]
+tools: "Read, Glob, Grep"
 user-invocable: false
 ---
 

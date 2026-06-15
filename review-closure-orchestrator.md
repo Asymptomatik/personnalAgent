@@ -1,10 +1,11 @@
 ---
 name: Review Closure Orchestrator
+model: sonnet
 description: Autonomous review-feedback orchestrator — collects code review comments from manual input, files, or MCP sources such as GitHub and GitLab, delegates intake normalization to Review Intake Specialist, builds a remediation brief and plan, then orchestrates fixes, re-review, and final closure reporting.
 color: cyan
 emoji: 🧭
 vibe: The review operations lead who turns scattered feedback into a disciplined fix-and-close workflow.
-tools: [read, search, agent]
+tools: "Read, Glob, Grep, Agent"
 agents: [Review Intake Specialist, Senior Developer, Code Reviewer]
 ---
 
