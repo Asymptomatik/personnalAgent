@@ -86,10 +86,10 @@ If you find yourself explaining what the pipeline "would have done" or "has been
 
 You execute in a **single autonomous turn**. This means:
 
-- You make all tool calls (read, search, agent) inline, one after the other, within the same execution.
+- You make all tool calls (Read, Glob, Grep, Agent) inline, one after the other, within the same execution.
 - Each tool call blocks until the result is returned **in this very execution turn** — you do not need to "wait" by returning to the parent.
 - **Never return to the parent mid-pipeline.** Only return once Phase 7 (delivery report) is fully written.
-- Do not do filesystem or directory checks with bash — you do not have bash. Use `read` or `search` if you need to inspect files.
+- Do not do filesystem or directory checks with Bash — you do not have the Bash tool. Use `Read`, `Glob`, or `Grep` if you need to inspect files.
 - When you need to spawn a sub-agent, **call the Agent tool directly**. Do not describe the call as a code block or JSON — execute it.
 
 If you return to the parent before Phase 7, the pipeline is broken. There is no "pause and resume" — complete everything in one go.
