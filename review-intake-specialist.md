@@ -1,5 +1,6 @@
 ---
 name: Review Intake Specialist
+model: sonnet
 description: Read-focused intake and triage specialist — collects external code review feedback from manual input, files, or MCP sources such as GitHub and GitLab, then normalizes, deduplicates, and classifies findings into structured review items for orchestration.
 color: blue
 emoji: 📥
