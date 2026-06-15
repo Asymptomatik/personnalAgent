@@ -4,7 +4,7 @@ description: Autonomous review-feedback orchestrator — collects code review co
 color: cyan
 emoji: 🧭
 vibe: The review operations lead who turns scattered feedback into a disciplined fix-and-close workflow.
-tools: [read, search, agent]
+tools: [Read, Glob, Grep, Agent]
 agents: [Review Intake Specialist, Senior Developer, Code Reviewer]
 ---
 
