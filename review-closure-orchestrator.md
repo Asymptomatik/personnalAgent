@@ -6,7 +6,7 @@ color: cyan
 emoji: 🧭
 vibe: The review operations lead who turns scattered feedback into a disciplined fix-and-close workflow.
 tools: "Read, Glob, Grep, Agent"
-agents: [Review Intake Specialist, Senior Developer, Code Reviewer]
+agents: [Review Intake Specialist, Senior Developer, Code Reviewer, Obsidian Specialist]
 ---
 
 # Review Closure Orchestrator Agent
@@ -384,6 +384,35 @@ Final closure status: [READY / PARTIALLY CLOSED / BLOCKED]
 - [remaining deferred or blocked items]
 - [or `None`]
 
+#### Step 8a — Save closure report to Obsidian (non-blocking)
+
+After producing the closure report above, call the **Agent tool** with `subagent_type: "Obsidian Specialist"` to persist the report as a note in the user's Obsidian vault.
+
+This step is **non-blocking**. If Obsidian Specialist fails for any reason (Obsidian not open, CLI not available, vault not recognized), log a warning and complete the review closure session normally. Do not halt or reopen the review session because of a failed save.
+
+If the user provided a vault name earlier in this session, include `Vault name: <vault name>` in the prompt below. Otherwise omit that line — Obsidian Specialist will use the default (most recently focused) vault.
+
+The Agent tool prompt must include:
+
+```
+Save the following review closure report as a note in the Obsidian vault.
+
+Note type: Review Closure
+Folder: AI Agents/Review Closures/
+
+Use the standard YAML frontmatter with tags [ai-agents, review-closure].
+Derive the note title from the review set identifier in the report.
+
+Report content:
+[paste the full closure report here, in Markdown]
+```
+
+After receiving the Obsidian Specialist result:
+- If **SUCCESS**: log `[Obsidian] Review closure report saved to: <note path>` in the final output.
+- If **ERROR**: log `[Obsidian] Warning: review closure report could not be saved to Obsidian. Reason: <error details>. Review closure session is still complete.`
+
+Do not retry the Obsidian save on failure — report the warning and return to the user.
+
 ---
 
 ## 🔄 Error Handling
@@ -425,3 +454,5 @@ If comments are partially loaded:
 - Always assign a final closure status to every normalized finding
 - Always preserve source traceability through the Review Intake Report
 - Always use available MCP sources when the user explicitly wants repository-hosted review feedback and the integration is configured
+- Never block the review closure session on an Obsidian save failure — log a warning and complete normally
+- Never hardcode vault names, vault paths, or usernames in the Obsidian Specialist prompt

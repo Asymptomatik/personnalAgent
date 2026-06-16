@@ -15,6 +15,7 @@ A collection of custom Claude Code agents tailored for structured delivery workf
 | [Debug Specialist](debug-specialist.md) | 🐛 | Reproduces failures, traces root causes, maps blast radius, and produces a structured diagnosis with a fix plan | ✅ |
 | [Review Closure Orchestrator](review-closure-orchestrator.md) | 🧭 | Collects external review feedback (GitHub, GitLab, manual) and orchestrates fix-and-close workflows | ✅ |
 | [Review Intake Specialist](review-intake-specialist.md) | 📥 | Normalizes and deduplicates raw review comments into structured findings | via Review Closure Orchestrator |
+| [Obsidian Specialist](obsidian-specialist.md) | 🗒️ | Reads, creates, appends, and searches Obsidian notes via the `obsidian` CLI — called by orchestrators to persist delivery outputs, or invoked directly for note operations | ✅ (or via orchestrators) |
 
 ---
 
@@ -109,6 +110,22 @@ cd personnalAgent
 git pull
 cp *.md ~/.claude/agents/
 ```
+
+---
+
+## Obsidian integration
+
+The Obsidian Specialist agent persists agent outputs (delivery reports, debug diagnoses, review closures) as structured Markdown notes in an Obsidian vault.
+
+It is called automatically at the end of a Jarvis pipeline, a Debug Specialist session, or a Review Closure Orchestrator run. You can also invoke it directly to read, create, append, or search notes.
+
+Notes are organized under an `AI Agents/` top-level folder inside the vault, grouped by type: `AI Agents/Delivery Reports/`, `AI Agents/Debug Reports/`, `AI Agents/Review Closures/`, and `AI Agents/Briefs/`.
+
+**Requirements for Obsidian integration:**
+- The Obsidian desktop app must be open when a note write is attempted.
+- The `obsidian` CLI must be installed and available in your system `PATH`.
+
+If either condition is not met, the Obsidian Specialist reports the error gracefully and returns control to the calling orchestrator without interrupting the pipeline.
 
 ---
 
