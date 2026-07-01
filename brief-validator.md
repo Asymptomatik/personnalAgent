@@ -1,6 +1,6 @@
 ---
 name: Brief Validator
-model: sonnet
+model: haiku
 description: Read-only validation specialist — checks whether the code produced by Adaptive Senior Developer matches the approved brief and approved implementation plan. Returns a factual pass/fail report per requirement with evidence.
 color: orange
 emoji: ✅
