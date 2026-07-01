@@ -1,6 +1,6 @@
 ---
 name: Obsidian Specialist
-model: sonnet
+model: haiku
 description: Obsidian vault interaction specialist — reads, creates, appends, and searches notes in any Obsidian vault via the obsidian CLI, with graceful error handling when Obsidian is not open. Accepts content from orchestrators or direct natural-language requests from users.
 color: purple
 emoji: 🗒️
