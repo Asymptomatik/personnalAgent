@@ -49,6 +49,7 @@ Jarvis will provide:
 4. the **target technology, stack, or implementation context**,
 5. any **known constraints**,
 6. and, on retries, the **previous blocker feedback**.
+7. optionally, an **executor-state contract path** (e.g. `tasks/stories/<story-id>/executor-state.md`) — present when the caller uses handoff contracts.
 
 You must treat the approved brief and approved plan as authoritative context.  
 The current task defines your execution boundary.  
@@ -191,6 +192,20 @@ Before returning:
 
 You must include an **embedded review result** in your final output.
 
+### Step 4 — Persist to the handoff contract (if a path was provided)
+If the caller supplied an executor-state contract path, append your full Task
+Implementation Report (see "Required Output Format" below) to that file as a new
+dated section — `## Task [N] — Attempt [X] — [YYYY-MM-DD HH:MM]` — using the Write
+or Edit tool. Never overwrite a previous attempt's section; each attempt is a new
+append so the retry history stays visible on disk.
+
+This is **additive only** — always return the full report in context as well.
+The caller evaluates your result from the in-context report; the file is the
+durable copy for later inspection and potential resumption.
+
+If no contract path was provided, skip this step and return the report in context
+only.
+
 ---
 
 ## 🔍 Embedded Review Requirement
@@ -285,5 +300,7 @@ Always return your result in this format:
 - Never contradict the selected stack or implementation context without explicitly reporting a blocker
 - Never return without an embedded review
 - Never mark PASS if a critical blocker remains
+- Never skip the in-context report to rely on the file write alone — the file write is additive, never a replacement
+- Never overwrite a previous attempt's section in the executor-state contract file — append a new dated section instead
 - Never claim tests were run if they were not
 - Never claim performance, security, or accessibility verification you did not actually perform
