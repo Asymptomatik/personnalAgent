@@ -8,14 +8,14 @@ A collection of custom Claude Code agents tailored for structured delivery workf
 
 | Agent | Emoji | Role | User-invocable |
 |-------|-------|------|----------------|
-| [Jarvis](jarvis.md) | 🎛️ | Autonomous delivery orchestrator — turns a request into a full delivery pipeline (brief → plan → implement → review → validate) | ✅ |
-| [Adaptive Senior Developer](adaptive-senior-developer.md) | 💎 | Implements one approved task at a time, following the brief and plan strictly | ✅ (or via Jarvis) |
-| [Code Reviewer](code-reviewer.md) | 👁️ | Reviews implemented changes for correctness, security, maintainability, and test coverage | via Jarvis |
-| [Brief Validator](brief-validator.md) | ✅ | Cross-checks delivered code against the approved brief requirement by requirement | via Jarvis |
-| [Debug Specialist](debug-specialist.md) | 🐛 | Reproduces failures, traces root causes, maps blast radius, and produces a structured diagnosis with a fix plan | ✅ |
-| [Review Closure Orchestrator](review-closure-orchestrator.md) | 🧭 | Collects external review feedback (GitHub, GitLab, manual) and orchestrates fix-and-close workflows | ✅ |
-| [Review Intake Specialist](review-intake-specialist.md) | 📥 | Normalizes and deduplicates raw review comments into structured findings | via Review Closure Orchestrator |
-| [Obsidian Specialist](obsidian-specialist.md) | 🗒️ | Reads, creates, appends, and searches Obsidian notes via the `obsidian` CLI — called by orchestrators to persist delivery outputs, or invoked directly for note operations | ✅ (or via orchestrators) |
+| [Jarvis](agents/jarvis.md) | 🎛️ | Autonomous delivery orchestrator — turns a request into a full delivery pipeline (brief → plan → implement → review → validate) | ✅ |
+| [Adaptive Senior Developer](agents/adaptive-senior-developer.md) | 💎 | Implements one approved task at a time, following the brief and plan strictly | ✅ (or via Jarvis) |
+| [Code Reviewer](agents/code-reviewer.md) | 👁️ | Reviews implemented changes for correctness, security, maintainability, and test coverage | via Jarvis |
+| [Brief Validator](agents/brief-validator.md) | ✅ | Cross-checks delivered code against the approved brief requirement by requirement | via Jarvis |
+| [Debug Specialist](agents/debug-specialist.md) | 🐛 | Reproduces failures, traces root causes, maps blast radius, and produces a structured diagnosis with a fix plan | ✅ |
+| [Review Closure Orchestrator](agents/review-closure-orchestrator.md) | 🧭 | Collects external review feedback (GitHub, GitLab, manual) and orchestrates fix-and-close workflows | ✅ |
+| [Review Intake Specialist](agents/review-intake-specialist.md) | 📥 | Normalizes and deduplicates raw review comments into structured findings | via Review Closure Orchestrator |
+| [Obsidian Specialist](agents/obsidian-specialist.md) | 🗒️ | Reads, creates, appends, and searches Obsidian notes via the `obsidian` CLI — called by orchestrators to persist delivery outputs, or invoked directly for note operations | ✅ (or via orchestrators) |
 
 ---
 
@@ -34,13 +34,13 @@ Clone or download this repo, then copy the agent files into your Claude Code glo
 **macOS / Linux**
 ```bash
 git clone https://github.com/Asymptomatik/personnalAgent.git
-cp personnalAgent/*.md ~/.claude/agents/
+cp personnalAgent/agents/*.md ~/.claude/agents/
 ```
 
 **Windows (PowerShell)**
 ```powershell
 git clone https://github.com/Asymptomatik/personnalAgent.git
-Copy-Item personnalAgent\*.md "$env:USERPROFILE\.claude\agents\"
+Copy-Item personnalAgent\agents\*.md "$env:USERPROFILE\.claude\agents\"
 ```
 
 > The `~/.claude/agents/` directory (or `%USERPROFILE%\.claude\agents\` on Windows) is automatically created by Claude Code. Create it manually if it does not exist yet.
@@ -51,7 +51,7 @@ Copy the agent files into a `.claude/agents/` directory at the root of your proj
 
 ```bash
 mkdir -p .claude/agents
-cp path/to/personnalAgent/*.md .claude/agents/
+cp path/to/personnalAgent/agents/*.md .claude/agents/
 ```
 
 Project-level agents are only active when Claude Code is running inside that project directory.  
@@ -64,13 +64,13 @@ You can install only the agents you need. For example, to install only the Debug
 **macOS / Linux**
 ```bash
 curl -o ~/.claude/agents/debug-specialist.md \
-  https://raw.githubusercontent.com/Asymptomatik/personnalAgent/main/debug-specialist.md
+  https://raw.githubusercontent.com/Asymptomatik/personnalAgent/main/agents/debug-specialist.md
 ```
 
 **Windows (PowerShell)**
 ```powershell
 Invoke-WebRequest `
-  -Uri "https://raw.githubusercontent.com/Asymptomatik/personnalAgent/main/debug-specialist.md" `
+  -Uri "https://raw.githubusercontent.com/Asymptomatik/personnalAgent/main/agents/debug-specialist.md" `
   -OutFile "$env:USERPROFILE\.claude\agents\debug-specialist.md"
 ```
 
@@ -108,7 +108,7 @@ To update to the latest version:
 ```bash
 cd personnalAgent
 git pull
-cp *.md ~/.claude/agents/
+cp agents/*.md ~/.claude/agents/
 ```
 
 ---
