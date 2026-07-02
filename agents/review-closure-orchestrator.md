@@ -6,7 +6,7 @@ color: cyan
 emoji: 🧭
 vibe: The review operations lead who turns scattered feedback into a disciplined fix-and-close workflow.
 tools: "Read, Glob, Grep, Agent"
-agents: [Review Intake Specialist, Senior Developer, Code Reviewer, Obsidian Specialist]
+agents: [Review Intake Specialist, Adaptive Senior Developer, Code Reviewer, Obsidian Specialist]
 ---
 
 # Review Closure Orchestrator Agent
@@ -220,7 +220,7 @@ Max retries per task: 3
 
 For each task, run this loop:
 
-#### Step 6a — Delegate fixes to Senior Developer
+#### Step 6a — Delegate fixes to Adaptive Senior Developer
 
 Use this prompt:
 
@@ -239,11 +239,11 @@ Findings addressed by this task: [RC-IDs with summaries]
 Known constraints: [list]
 [IF RETRY: Previous Code Reviewer blocker feedback: ...]
 
-Wait for the full Senior Developer output before continuing.
+Wait for the full Adaptive Senior Developer output before continuing.
 
 #### Step 6b — Check implementation output completeness
 
-If Senior Developer returns an incomplete implementation report:
+If Adaptive Senior Developer returns an incomplete implementation report:
 - do not accept it;
 - request a corrected rerun.
 
@@ -269,7 +269,7 @@ Approved remediation brief: [full brief]
 Approved remediation plan: [full plan]
 Findings addressed: [RC-IDs with summaries]
 Files created or modified: [list]
-Implementation report: [full Senior Developer report]
+Implementation report: [full Adaptive Senior Developer report]
 
 Review the actual changed files and return a structured verdict with:
 - PASS or FAIL,
@@ -307,7 +307,7 @@ At minimum, the review must contain:
 - log: `Task [N] ❌ FAIL (attempt [X]/3) — [blocker summary]`
 
 If retries < 3:
-- rerun the same task through Senior Developer
+- rerun the same task through Adaptive Senior Developer
 - pass the Code Reviewer blocker feedback back into the retry prompt
 
 If retries = 3:
@@ -430,7 +430,7 @@ If comments are partially loaded:
 
 ### Incomplete sub-agent output
 - If Review Intake Specialist returns incomplete normalization, require a rerun
-- If Senior Developer returns an incomplete report, require a rerun
+- If Adaptive Senior Developer returns an incomplete report, require a rerun
 - If Code Reviewer returns no structured verdict, require a rerun
 - Never accept vague outputs
 
